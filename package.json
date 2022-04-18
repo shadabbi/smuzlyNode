@@ -1,0 +1,25 @@
+{
+  "name": "Smuzly",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Shadab Ali",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "i18next": "^21.6.16",
+    "node-html-parser": "^5.3.3",
+    "nodejs-file-downloader": "^4.9.3",
+    "pdf-creator-node": "^2.3.4",
+    "pdfmake": "^0.2.5"
+  }
+}

@@ -1,0 +1,607 @@
+<!DOCTYPE html >
+<html >
+    <head>
+       
+
+    
+        <style>
+
+            
+            .lang-select[dir=rtl]::before {
+            left: unset !important;
+            right: -15px !important;
+            }
+
+            .lang-select[dir=rtl] {
+            text-align: right;
+            }
+
+            p.lang-select.flex[dir=rtl] {
+            display: flex;
+            gap: 4px;
+            }
+
+
+            body {
+                font-family: 'Nunito', sans-serif;
+                background-color: #f7f7f7;
+                margin: 0;
+            }
+
+            .table {
+                color: #fff;
+                margin: 0 auto; 
+
+            }
+
+            .alignTop {
+                width: fit-content;
+                display: table;
+            }
+
+            .leftDetails {
+                background-color: #36474f;
+            
+                overflow: hidden;
+               display: inline-block;
+               width: 15rem;
+               display: table-cell;
+               vertical-align: top;
+                
+            }
+
+            .rightDetails {
+                object-fit: contain;
+                color: #36474f;
+                background-color: #fff;
+                /* padding: 45px 30px; */
+                /* padding-right: 5rem; */
+                display: inline-block;
+              
+                padding: 1rem;
+                width: 32rem;
+                vertical-align: top;
+            }
+
+            .leftTopBx {
+                background-color: #506570;
+                padding: 35px 0px 16px;
+                text-align: center;
+                min-width: 150px;
+                color: #fff;   
+             
+                    }
+
+            .centerTb {
+                margin: 0 auto;
+            }
+
+            .imgBox {
+                max-width: 13rem;
+                aspect-ratio: 1;
+                /* border-radius: 50%; */
+                background-color: #506570;
+                
+            }
+
+            .applicantName {
+                padding: 0 15px;
+                 font-weight: 700;
+                line-height: 1;
+                font-size: 2rem;
+                margin: 0;
+                margin-bottom: 10px;
+            }
+
+            .applicantDesig {
+                font-size: 1rem;
+                font-weight: 600;
+                margin: 0;
+            }
+
+            .abtMe {
+                /* background-color: #36474f; */
+                min-height: 50.21rem;
+              
+            }
+
+            .paddingLtr {
+                padding: 15px 15px;
+            }
+
+            .rightHeadings {
+                font-size: 22px;
+                font-weight: 900;
+                color: #36474f;
+                margin-bottom: 25px;
+            }
+
+            .leftSubHeadings {
+                font-size: 17px;
+                color: #fff;
+                font-weight: 600;
+                margin-top: 0;
+                margin-bottom: 1rem;
+            }
+
+            .abtMe p {
+                font-size: 13px;
+                width: 26ch;
+            }
+
+            .rightSubHeadings {
+                font-size: 12px;
+                color: #36474f;
+                font-weight: 600;
+                margin-top: 20px;
+                margin-bottom: 2px;
+            }
+
+            .rightSubHeadingsM {
+                font-size: 16px;
+                color: #36474f;
+                font-weight: 600;
+                margin-top: 0px;
+                margin-bottom: 2px;
+            }
+
+            .sumText {
+                font-size: 16px;
+                line-height: 1.3;
+                margin: 0 0;
+                font-weight: 500;
+                object-fit: contain;
+            }
+            
+            .lastSum {
+                font-size: 17px;
+                line-height: 1.3;
+                margin-bottom: 10px;
+                font-weight: 500;
+         
+            }
+
+            .leftText {
+                font-size: 13px;
+                line-height: 1.3;
+                margin: 0 0;
+                color: #fff;
+            }
+
+            .sectionRow {
+                padding-top: 30px;
+            }
+
+
+            .cv-template  {
+                height: fit-content;
+                /* display: grid; */
+         
+                place-items: center;
+                background-color: #f7f7f7;
+            }
+            .cv-container{
+                display:flex; 
+                gap:4px;
+                position: relative; 
+                justify-content: center; 
+                width: fit-content;
+                margin: 0 auto;
+            } 
+
+            .cv-vertical-border {
+                position: absolute;
+                width: 4px;
+                background-color: orange;
+                height: 85%;
+                top: 52%;
+                transform: translateY(-50%);
+                left: -10px;
+            }
+
+            .cv-profile-details {
+                padding: 0 25px 0 10px;
+                max-width: 163px;
+             
+            }
+
+            .cv-experience-wrapper {
+                background: #fff;
+                width: 100%;
+            }
+
+            .download-btn {
+                position:absolute;
+                top: 10px;
+                left: 10px;
+                z-index: 999999;
+            }
+
+            .download-btn button {
+                padding: 10px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .very-specific-design {
+              width: 600px; 
+              max-height: 85vh;
+              overflow-y: scroll;
+              background: white;
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%, -50%);
+              transform-origin: center center;
+            }
+
+            .very-specific-design::-webkit-scrollbar {
+              width: 5px;
+            }
+            .very-specific-design::-webkit-scrollbar-track {
+              background: transparent; 
+            }
+            .very-specific-design::-webkit-scrollbar-thumb {
+              background: #888;
+              border-radius: 1px; 
+            }
+            .very-specific-design::-webkit-scrollbar-thumb:hover {
+              background: #555; 
+            }
+
+            .scaleable-wrapper {
+              position: relative;
+              height: 130vh;
+            }
+            #resume {
+                height: 100%;
+            }
+        </style> 
+    </head>
+    <body dir="<%= dir %>" style="position:relative;" class="antialiased">
+
+
+        <div style=" font-family: <%= templateData.fontFamily %> ;" class="scaleable-wrapper cv-template" id="scaleable-wrapper">
+          <div id="resume" class="table, pdfStyle lang-select default-template templatePreview">
+                <div class="alignTop" id="very-specific-design" dir="<%= dir %>" >
+                    <div  class="leftDetails" style=" background-color: <%= templateData.color %> ;"> 
+                       
+                        <div style=" background-color: <%= templateData.secondColor %> ;" class="leftTopBx">
+
+                            <% if(profileInfo.cv_img) { %>
+                                <img style="border-radius: <%= templateData.round ? '100%' : 0   %>" src="<%= profileInfo.cv_img %>" class="imgBox" alt="" />
+                                
+                                <% }  else { %>
+                                    <img src="http://laravelpassportreact.com/assets/images/resumedemo.jpg" class="imgBox" alt="" />
+                          <% } %>
+
+                            <div>
+                                <p class="applicantName">
+
+                                    <%= profileInfo.firstName ? profileInfo.firstName : 'SEAN BENET' %>
+
+                                
+                                    
+                                </p>
+
+                                <span class="applicantDesig">
+
+                                    <%= profileInfo.occupation ? profileInfo.occupation : 'fttx engineer' %>
+                                  
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                    <div class="abtMe">
+                        <div class="paddingLtr">
+
+                            <div>
+                                <h6 class="leftSubHeadings">
+                                    ABOUT ME
+                                </h6>
+
+                                <div class="leftText">
+                                    <span>
+                                        <p>
+
+                                            
+                                            <% if(objective) { %>
+                                                <%- objective %>
+                                        <% }  else { %>
+                                            High self-study ability, work under pressure, high motivation for <br/>
+                                                    work and success in any job. <br/>
+                                                        Making decisions and responsibilities, dealing with stress and <br/>
+                                                working in parallel on several projects. 
+                                        <% } %>
+                           
+                                           
+                                        </p>
+
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div>
+
+                                <h6 class="leftSubHeadings">
+                                    <%= transalate('contact_me') %>
+                                </h6>
+
+                                <div class="leftText">
+                                    <p  dir="<%= dir %>" class="lang-select flex">EMAIL: 
+
+                                  <span>
+                                    <%= profileInfo.email ? profileInfo.email : 'nexg@test.com' %>
+                                  </span>
+                                     
+                                    
+                                    </p>
+                                    <p  dir="<%= dir %>" class="lang-select flex">COUNTRY: 
+                                      
+                                        <% if(profileInfo.nationality) { %>
+                                            
+                                            <span> <%= profileInfo.nationality %> </span>
+                                     <% }  else { %>
+                                        <span> 
+                                            Indian
+                                            </span>
+                                      <% } %>
+                                  
+                                      
+                                  
+                                    </p>
+                                    <p  dir="<%= dir %>" class="lang-select flex">DATE OF BIRTH: 
+
+                                        <% if(profileInfo.dob) { %>
+                                            
+                                            <span> <%= profileInfo.dob %> </span>
+                                     <% }  else { %>
+                                      
+                                            <span> 10-07-1998 </span>
+                                          
+                                      <% } %>
+                                      
+                                     
+                                    
+                                    </p>
+                                    <p  dir="<%= dir %>" class="lang-select flex">Portfolio: 
+
+                                        <% if(profileInfo.link) { %>
+                                            
+                                            <span> <%= profileInfo.link %> </span>
+                                     <% }  else { %>
+                                     
+                                        <span>http://linkedin.com</span>
+                                            
+                                      <% } %>
+                                     
+                                    </p>
+                                </div>
+
+                            </div>
+                            <div>
+
+                                <h6 class="leftSubHeadings">
+                                    <%= transalate('languages') %>
+                                </h6>
+
+                                <div class="leftText">
+                                    
+
+                                    <% if(languages.length) { %>
+                                            
+                                        <% languages.forEach(function(language){ %>
+                                            <p  dir="<%= dir %>" class="lang-select flex">
+                                                <%= language.item %>
+                                            </p>
+                                              
+                                        <% }); %>
+
+                                        <% }  else { %>
+                                 
+                                     <p  dir="<%= dir %>" class="lang-select flex">
+                                            Hindi<span>100%</span>
+                                        </p>
+                                        <p  dir="<%= dir %>" class="lang-select flex">
+                                            English<span>100%</span>
+                                        </p>
+                                        
+                                  <% } %>
+
+                                   
+
+                                    
+                                </div>
+
+                            </div>
+
+                            <div>
+
+                                <h6 class="leftSubHeadings">
+                                    <%= transalate('skills') %>
+                                </h6>
+
+                                <div class="leftText">
+                                
+
+                                <% if(skills.length) { %>
+                                            
+                                    <% skills.forEach(function(language){ %>
+                                        <p  dir="<%= dir %>" class="lang-select flex">
+                                            <%= language.item %>
+                                        </p>
+                                          
+                                    <% }); %>
+
+                                    <% }  else { %>
+                             
+                                        <span  dir="<%= dir %>" class="lang-select flex">
+                                            React, Vue js, Angular 
+                                        </span>
+                                    
+                              <% } %>
+                                </div>
+
+                            </div>
+                            
+
+                        </div>
+                    </div>
+                </div>
+                    <div class="rightDetails">
+                        <div>
+                          
+                               <div>
+                                 
+                                        <h2 class="rightHeadings">
+                                            <%= transalate('work_experience') %>
+                                        </h2>
+                                  
+                               </div>
+
+                              
+                              
+                              
+
+                                    <% if(experience.length) { %>
+                                                
+                                        <% experience.forEach(function(exp){ %>
+                                           
+                                            <div>
+                                                <h6 class="rightSubHeadingsM">
+                                                    <span>
+                                                        <%= exp.startDate %>- <%= exp.endDate %>
+                                                    </span>
+                                                </h6>
+            
+                                                <p class="sumText">
+                                                    <span>
+                                                        <%= exp.title %><br/> 
+                                                        <%= exp.company %><br/><%= exp.location %> <br/><br />
+
+                                                        <%- exp.description %><br/><br />
+                                                    </span>
+                                                </p>
+                                            </div>
+                                              
+                                        <% }); %>
+
+                                        <% }  else { %>
+                                 
+                                            <div>
+                                                <h6 class="rightSubHeadingsM">
+                                                    <span>
+                                                        10/2021 - 10/2022
+                                                    </span>
+                                                </h6>
+    
+                                                <p  class="sumText">
+                                                    <span>
+                                                        Web Developer<br/> 
+                                                        Nexgen Innovators<br/>Dwarka More, Delhi <br/><br />
+                                                        I have done many projects while studying here<br/><br />
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        
+                                  <% } %>
+                               
+                                   
+                            
+                        </div>
+
+                       
+                            <div class="sectionRow">
+                             
+                                    <div>
+                                        <h2 class="rightHeadings">
+                                            <%= transalate('education') %>
+                                        </h2>
+                                    </div>
+                              
+    
+                                    <% if(education.length) { %>
+                                                
+                                        <% education.forEach(function(edu){ %>
+                                           
+                                            <div>
+                                                <h6 class="rightSubHeadingsM">
+                                                    <span>
+                                                        <%= edu.startDate %>- <%= edu.endDate %>
+                                                    </span>
+                                                </h6>
+            
+                                                <p class="sumText">
+                                                    <span>
+                                                        <%= edu.degree %><br/> 
+                                                        <%= edu.college %><br/>
+                                                        <%= edu.location %> <br/><br />
+                                                        <%- edu.description %><br/><br />
+                                                    </span>
+                                                </p>
+                                            </div>
+                                              
+                                        <% }); %>
+
+                                        <% }  else { %>
+                                 
+                                            <div>
+                                                <h6 class="rightSubHeadingsM">
+                                                    <span>
+                                                        10/2021 - 10/2022
+                                                    </span>
+                                                </h6>
+        
+                                                <p class="sumText">
+                                                    <span>
+                                                        BCA<br/> 
+                                                        IITM<br/>Janakpuri, Delhi <br/><br />
+                                                        I have done many projects in college<br/><br />
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        
+                                  <% } %>
+                                   
+                            </div>
+
+                            <% if(customSections.length) { %>
+                                                
+                                <% customSections.forEach(function(sec){ %>
+                                   
+                                
+                                        <div className='sectionRow'>
+                                            
+                                                <div>
+                                                    <h2 className='rightHeadings'>
+                                                          
+                                                        <%= sec.title %>
+                                                    </h2>
+                                                </div>
+                                           
+
+                                         
+                                                <div>
+                                                    <%- sec.description %>
+                                                       
+                                                </div>
+                                           
+                                        </div>
+                                  
+                                      
+                                <% }); %>
+
+                                <% }  %>
+                      
+                    </div>
+
+                   
+                </div>
+            </div>
+        </div>
+
+
+    
+    </body>
+</html>

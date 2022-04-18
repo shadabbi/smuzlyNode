@@ -1,0 +1,580 @@
+<!DOCTYPE html >
+<html >
+    <head>
+
+        <style>
+            body {
+                font-family: 'Nunito', sans-serif;
+                background-color: #f7f7f7;
+                margin: 0;
+            }
+
+            .table {
+                color: #fff;
+                margin: 0 auto; 
+
+            }
+
+            .alignTop {
+                width: fit-content;
+            }
+
+            .leftDetails {
+                background-color: #36474f;
+            
+                overflow: hidden;
+               display: inline-block;
+               width: 15rem;
+               float: left;
+                
+            }
+
+            .rightDetails {
+                object-fit: contain;
+                color: #36474f;
+                background-color: #fff;
+                /* padding: 45px 30px; */
+                /* padding-right: 5rem; */
+                display: inline-block;
+                height: 63rem;
+                padding: 1rem;
+                width: 32rem;
+            }
+
+            .leftTopBx {
+                background-color: #506570;
+                padding: 35px 0px 16px;
+                text-align: center;
+                min-width: 150px;
+                color: #fff;   
+             
+                    }
+
+            .centerTb {
+                margin: 0 auto;
+            }
+
+            .imgBox {
+                max-width: 13rem;
+                aspect-ratio: 1;
+                border-radius: 50%;
+                background-color: #506570;
+                
+            }
+
+            .applicantName {
+                padding: 0 15px;
+                 font-weight: 700;
+                line-height: 1;
+                font-size: 2rem;
+                margin: 0;
+                margin-bottom: 10px;
+            }
+
+            .applicantDesig {
+                font-size: 1rem;
+                font-weight: 600;
+                margin: 0;
+            }
+
+            .abtMe {
+                background-color: #36474f;
+                height: 50rem;
+              
+            }
+
+            .paddingLtr {
+                padding: 15px 15px;
+            }
+
+            .rightHeadings {
+                font-size: 22px;
+                font-weight: 900;
+                color: #36474f;
+                margin-bottom: 25px;
+            }
+
+            .leftSubHeadings {
+                font-size: 17px;
+                color: #fff;
+                font-weight: 600;
+                margin-top: 0;
+                margin-bottom: 1rem;
+            }
+
+            .abtMe p {
+                font-size: 13px;
+                width: 26ch;
+            }
+
+            .rightSubHeadings {
+                font-size: 12px;
+                color: #36474f;
+                font-weight: 600;
+                margin-top: 20px;
+                margin-bottom: 2px;
+            }
+
+            .rightSubHeadingsM {
+                font-size: 16px;
+                color: #36474f;
+                font-weight: 600;
+                margin-top: 0px;
+                margin-bottom: 2px;
+            }
+
+            .sumText {
+                font-size: 16px;
+                line-height: 1.3;
+                margin: 0 0;
+                font-weight: 500;
+                object-fit: contain;
+            }
+            
+            .lastSum {
+                font-size: 17px;
+                line-height: 1.3;
+                margin-bottom: 10px;
+                font-weight: 500;
+         
+            }
+
+            .leftText {
+                font-size: 13px;
+                line-height: 1.3;
+                margin: 0 0;
+                color: #fff;
+            }
+
+            .sectionRow {
+                padding-top: 30px;
+            }
+
+
+            .cv-template  {
+                height: fit-content;
+                /* display: grid; */
+         
+                place-items: center;
+                background-color: #f7f7f7;
+            }
+            .cv-container{
+                display:flex; 
+                gap:4px;
+                position: relative; 
+                justify-content: center; 
+                width: fit-content;
+                margin: 0 auto;
+            } 
+
+            .cv-vertical-border {
+                position: absolute;
+                width: 4px;
+                background-color: orange;
+                height: 85%;
+                top: 52%;
+                transform: translateY(-50%);
+                left: -10px;
+            }
+
+            .cv-profile-details {
+                padding: 0 25px 0 10px;
+                max-width: 163px;
+             
+            }
+
+            .cv-experience-wrapper {
+                background: #fff;
+                width: 100%;
+            }
+
+            .download-btn {
+                position:absolute;
+                top: 10px;
+                left: 10px;
+                z-index: 999999;
+            }
+
+            .download-btn button {
+                padding: 10px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .very-specific-design {
+              width: 600px; 
+              max-height: 85vh;
+              overflow-y: scroll;
+              background: white;
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%, -50%);
+              transform-origin: center center;
+            }
+
+            .very-specific-design::-webkit-scrollbar {
+              width: 5px;
+            }
+            .very-specific-design::-webkit-scrollbar-track {
+              background: transparent; 
+            }
+            .very-specific-design::-webkit-scrollbar-thumb {
+              background: #888;
+              border-radius: 1px; 
+            }
+            .very-specific-design::-webkit-scrollbar-thumb:hover {
+              background: #555; 
+            }
+
+            .scaleable-wrapper {
+              position: relative;
+              height: 130vh;
+            }
+            #resume {
+                height: 100%;
+            }
+        </style> 
+    </head>
+    <body style="position:relative;" class="antialiased">
+
+
+        <div class="scaleable-wrapper cv-template" id="scaleable-wrapper">
+          <div id="resume" class="table, pdfStyle lang-select default-template templatePreview">
+                <div class="alignTop" id="very-specific-design">
+                    <div  class="leftDetails" style="background-color: gray"> 
+                       
+                            <div class="leftTopBx">
+
+                                <img src="http://laravelpassportreact.com/assets/images/resumedemo.jpg" class="imgBox" alt="" />
+
+                                <div>
+                                    <p class="applicantName">
+                                        
+                                        {{#ifCond profileInfo.firstName '!=' null }}
+                                             {{profileInfo.firstName}}
+                                        {{/ifCond}}
+
+                                        {{#ifCond profileInfo.firstName '==' null }}
+                                            Shadab
+                                        {{/ifCond}}
+                                        
+                                    </p>
+
+                                    <span class="applicantDesig">
+                                        {{#ifCond profileInfo.occupation '!=' null }}
+                                         {{profileInfo.occupation}}
+                                        {{/ifCond}}
+                                        {{#ifCond profileInfo.occupation '==' null }}
+                                            Developer
+                                        {{/ifCond}}
+                                        
+                                    </span>
+                                </div>
+                            </div>
+
+                        <div class="abtMe">
+                            <div class="paddingLtr">
+
+                                <div>
+                                    <h6 class="leftSubHeadings">
+                                        ABOUT ME
+                                    </h6>
+
+                                    <div class="leftText">
+                                        <span>
+                                            <p>
+                                                {{#ifCond objective '==' null }}
+                                                        High self-study ability, work under pressure, high motivation for <br/>
+                                                        work and success in any job. <br/>
+                                                            Making decisions and responsibilities, dealing with stress and <br/>
+                                                    working in parallel on several projects. 
+                                                 {{/ifCond}}
+                                               
+
+                                                {{#ifCond objective '!=' null }}
+                                                        {{objective}}
+                                                {{/ifCond}}
+                                               
+                                            </p>
+
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div>
+
+                                    <h6 class="leftSubHeadings">
+                                        CONTACT ME
+                                    </h6>
+
+                                    <div class="leftText">
+                                        <p class="lang-select flex">EMAIL: 
+                                            {{#ifCond profileInfo.email '==' null }}
+                                                <span>  nexg@test.com</span>
+                                            {{/ifCond}}
+                                            {{#ifCond profileInfo.email '!=' null }}
+                                                <span> {{  profileInfo.email }}</span>
+                                                
+                                            {{/ifCond}}
+                                         
+                                        
+                                        </p>
+                                        <p class="lang-select flex">COUNTRY: 
+                                          
+                                        
+                                          {{#ifCond profileInfo.nationality '==' null }}
+                                            <span> 
+                                                Indian
+                                                </span>
+                                            {{/ifCond}}
+                                            {{#ifCond profileInfo.nationality '!=' null }}
+                                                <span> {{  profileInfo.nationality }}</span>
+                                                
+                                            {{/ifCond}}
+                                        </p>
+                                        <p class="lang-select flex">DATE OF BIRTH: 
+
+                                          
+                                          {{#ifCond profileInfo.dob '==' null }}
+                                              <span> 10-07-1998 </span>
+                                          {{/ifCond}}
+                                          {{#ifCond profileInfo.dob '!=' null }}
+                                              <span> {{  profileInfo.dob }}</span>
+                                              
+                                          {{/ifCond}}
+                                        
+                                        </p>
+                                        <p class="lang-select flex">Portfolio: 
+                                          
+                                          {{#ifCond profileInfo.link '==' null }}
+                                                <span>http://linkedin.com</span>
+                                          {{/ifCond}}
+                                          {{#ifCond profileInfo.link '!=' null }}
+                                              <span> {{  profileInfo.link }}</span>
+                                              
+                                          {{/ifCond}}
+                                        </p>
+                                    </div>
+
+                                </div>
+                                <div>
+
+                                    <h6 class="leftSubHeadings">
+                                        LANGUAGES
+                                    </h6>
+
+                                    <div class="leftText">
+                                        
+
+                                        {{#ifCond languages.length '==' 0 }}
+                                            <p class="lang-select flex">
+                                                Hindi<span>100%</span>
+                                            </p>
+                                            <p class="lang-select flex">
+                                                English<span>100%</span>
+                                            </p>
+                                        {{/ifCond}}
+                                        {{#ifCond languages.length '!=' 0 }}
+                                                {{#each languages}}
+                                                    <p class="lang-select flex">
+                                                        {{this.item}}
+                                                    </p>
+                                               
+                                                {{/each}}
+                                            
+                                        {{/ifCond}}
+
+                                        
+                                    </div>
+
+                                </div>
+
+                                <div>
+
+                                    <h6 class="leftSubHeadings">
+                                        SKILLS
+                                    </h6>
+
+                                    <div class="leftText">
+                                        {{#ifCond skills.length '==' 0 }}
+                                        <span class="lang-select flex">
+                                            React, Vue js, Angular 
+                                        </span>
+                                    {{/ifCond}}
+                                       
+
+                                      {{#ifCond skills.length '!=' 0 }}
+                                        {{#each skills}}
+                                            <p class="lang-select flex">
+                                                {{this.item}}
+                                            </p>
+                                        
+                                        {{/each}}
+                                    
+                                    {{/ifCond}}
+                                    </div>
+
+                                </div>
+                                
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rightDetails">
+                        <div>
+                          
+                               <div>
+                                 
+                                        <h2 class="rightHeadings">
+                                          WORK EXPERIENCE
+                                        </h2>
+                                  
+                               </div>
+
+                               {{#ifCond experience.length '!=' 0 }}
+                                    {{#each experience}}
+                                        <div>
+                                            <h6 class="rightSubHeadingsM">
+                                                <span>
+                                                    {{ this.startDate }}- {{ this.endDate }}
+                                                </span>
+                                            </h6>
+        
+                                            <p  class="sumText">
+                                                <span>
+                                                    {{this.title}}<br/> 
+                                                    {{this.company}}<br/>{{this.location}} <br/><br />
+                                                    {{this.description}}<br/><br />
+                                                </span>
+                                            </p>
+                                        </div>
+                                    
+                                    {{/each}}
+                           
+                                {{/ifCond}}
+                              
+                                   
+                                {{#ifCond experience.length '==' 0 }}
+                                        <div>
+                                            <h6 class="rightSubHeadingsM">
+                                                <span>
+                                                    10/2021 - 10/2022
+                                                </span>
+                                            </h6>
+
+                                            <p  class="sumText">
+                                                <span>
+                                                    Web Developer<br/> 
+                                                    Nexgen Innovators<br/>Dwarka More, Delhi <br/><br />
+                                                    I have done many projects while studying here<br/><br />
+                                                </span>
+                                            </p>
+                                        </div>
+                                    {{/ifCond}}
+                               
+                                   
+                            
+                        </div>
+
+                        <div>
+                            <div class="sectionRow">
+                                <div>
+                                    <div>
+                                        <h2 class="rightHeadings">
+                                            EDUCATION
+                                        </h2>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <div>
+                                            <div>
+                                                <h6 class="rightSubHeadingsM">
+                                                    <span>
+                                                        10/2021 - 10/2022
+                                                    </span>
+                                                </h6>
+
+                                                <p class="sumText">
+                                                    <span>
+                                                        BCA<br/> 
+                                                        IITM<br/>Janakpuri, Delhi <br/><br />
+                                                        I have done many projects in college<br/><br />
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div >
+                                <div>
+                                    <div>
+                                        <div>
+                                            <div>
+                                                
+                                                <p class="lastSum">
+
+                                                     <span>
+                                                        As part of my high-capacity demonstrated roles, leading complex<br />
+                                                        processes while finding a solution real-time issues and providing<br />
+                                                        professional support and advice to a variety of factors within and<br />
+                                                        outside the organization.
+                                                    </span>
+                                                </p>
+                                                <p class="lastSum">
+                                                    <span>
+                                                        I was also required to have high technical skill and creativity in<br />
+                                                        solving complex problems.
+                                                    </span>
+                                                </p>
+
+                                                <p class="lastSum">
+                                                    <span>
+                                                        I am looking for positions of a technical and professional nature in<br />
+                                                        order to express my skills in the best way.<br />
+                                                        Recommendations will be accepted upon request.
+                                                    </span>
+                                                </p> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div >
+                          <div class="sectionRow">
+                              <div>
+                                  <div>
+                                      <h2 class="rightHeadings">
+                                          Projects 
+                                      </h2>
+                                  </div>
+                              </div>
+
+                              <div>
+                                  <div>
+                                      <div>
+                                          <div>
+                                              I have created many projects
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    
+    </body>
+</html>

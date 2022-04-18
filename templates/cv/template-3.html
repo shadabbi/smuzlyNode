@@ -1,0 +1,410 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Laravel</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #f7f7f7;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+
+        .alignTop {
+            max-width: 785px;
+            margin: 0 auto;
+            background-image: url('Shape.svg');
+            background-repeat: no-repeat;
+            background-size: 20%;
+            height: 100%;
+        }
+
+
+
+
+
+
+        .download-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 999999;
+        }
+
+        .download-btn button {
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .scaleable-wrapper {
+            padding: 0px 20px ;
+            position: relative;
+            height: auto;
+        }
+
+        #resume {
+            height: 100%;
+        }
+
+
+        .skills_circle{
+            
+            display: inline-block;
+            width: 60px;
+            padding: 0px 10px 0px;
+            font-size: 16px;
+            font-weight: 700;
+            border-bottom: 2px solid #f2d091;
+            text-align: center;
+            color: #000;
+            margin: 15px 10px 0;
+
+        }
+
+        .Lang_circle{
+            color: #000;
+            display: inline-block;
+            padding: 0px 10px 0px;
+            font-size: 14px;
+            font-weight: 700;
+            border-bottom: 2px solid #755e8c;
+            text-align: center;
+            margin: 15px 10px 0;
+
+        }
+
+        .clr_blck{
+            color: #333f4f;
+            min-height: 127.4px;
+            font-size: 16px;
+            padding: 0 25px;
+        }
+
+        .clr_blck .lang-select {
+            margin: 5px 0;
+        } 
+
+
+        /* template 5 */
+
+        .first_block{
+            text-align: right;
+            padding-top: 20px;
+            max-width: 525px;
+            margin-left: auto;
+        }
+
+        .first_block .leftText .lang-select{
+            
+            display: inline-block;
+            min-width: 260px;
+            text-align: left;
+            
+        }
+
+        .first_block .leftText .lang-select .left_width{
+            width: 110px;
+            text-align: left;
+            display: inline-block;
+        }
+
+        .first_block .leftText .lang-select.rev{
+            text-align: revert;            
+        }
+
+        .first_block h1, .first_block h6{
+            margin: 0;
+            position: relative;
+        }
+
+        .first_block h1{
+            font-size: 40px;
+        }
+
+        .first_block h6{
+            font-size: 16px;
+        }
+
+        .first_block .clr_blck{
+            width: 100%;
+            padding: 0;
+        }
+
+        .first_block h1::before{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -275px;
+            width: 100%;
+            height: 5px;
+            content: '';
+            background-color: #f2d091;
+        }
+
+        .first_block .name_container{
+            display: inline-block;
+        }
+
+        .nw_summary.exp_mt{
+            margin-top: 30px;
+        }
+
+        .nw_summary{
+            display: inline-block;
+            width: 100%;
+        }
+
+        .fp_block{
+            display: inline-block;
+            float: left;
+        }
+
+        .fp_block h3{
+            width: 200px;
+            text-align: right;
+            padding: 0 30px;
+            color: #755e8c;
+        }
+
+        .fp_block p{
+            max-width: 500px;
+            margin-bottom: 0;
+        }
+
+        .fp_block .rightSubHeadingsM{
+            margin: 1rem 0 0;
+            font-size: 18.72px;
+            width: 100%;
+            padding: 0;
+            text-align: left;
+            color: #000;
+        }
+
+        .fp_block .rightSubHeadingsM.ex_mt{
+            margin-top: 30px;
+        }
+
+        .fp_block .txt_right{
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body style="position:relative;" class="antialiased">
+
+
+
+    <div class="download-btn">
+        <button onclick="handlePrint()">Download PDF</button>
+    </div>
+
+    <div class="scaleable-wrapper cv-template" id="scaleable-wrapper">
+        <div id="resume" class="table, pdfStyle lang-select default-template templatePreview">
+            <div class="alignTop" id="very-specific-design">
+               
+                <div class="first_block">
+                    <span>
+                        <h6>
+                            fttx engineer | 28 years
+                        </h6>
+                    </span>
+                    
+                    <div class="name_container">
+                        <h1>
+                            SEAN BENET
+                        </h1>
+                    </div>
+
+                    <div class="leftText clr_blck">
+                        <p class="lang-select flex">
+                            <span> +972523158955</span>
+                        </p>
+                        <p class="lang-select rev flex">
+                            <span> nexg@test.com</span>
+                        </p>
+                        <p class="lang-select  flex">
+                            <span> www.linkedin.com </span>
+                        </p>
+                        <p class="lang-select rev flex">
+                            <span class="left_width">
+                                Indian
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="sec_container">
+
+                        <div class="nw_summary">
+                            <span>
+                                <div class="fp_block">
+                                    <h3>
+                                        ABOUT ME
+                                    </h3>
+                                </div>
+                            </span>
+                        
+                            <span>
+                                <div class="fp_block">
+                                    <p>
+                                        High self-study ability, work under pressure, high motivation for work and success in any job. <br />
+                                        Making decisions and responsibilities, dealing with stress and
+                                        working in parallel on several projects.
+                                    </p>
+                                </div>
+                            </span>
+                        </div>
+                        
+                        <div class="nw_summary exp_mt">
+                            <span>
+                                <div class="fp_block">
+                                    <h3 class="">
+                                        EXPERIENCE
+                                    </h3>
+                                </div>
+                            </span>
+                        
+                            <span>
+                                <div class="fp_block">
+                        
+                                    <h3 class="rightSubHeadingsM">
+                                        2017 - 2022 | Electra Technologies
+                                    </h3>
+                        
+                                    <p class="sumText">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero similique, quas iure animi ipsa eaque
+                                        nisi illo! Vel sit, aliquam corrupti impedit ea perferendis suscipit <br /> expedita accusamus odio
+                                        neque quas hic.
+                                    </p>
+                        
+                                    <h3 class="rightSubHeadingsM ex_mt">
+                                        2017 - 2022 | Electra Technologies2
+                                    </h3>
+                        
+                                    <p class="sumText">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    </p>
+                        
+                                    <h3 class="rightSubHeadingsM ex_mt">
+                                        2016 - 2022 | Electra Technologies3
+                                    </h3>
+                        
+                                    <p class="sumText">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero similique, quas iure animi ipsa eaque
+                                        nisi illo! Vel
+                                        sit, aliquam corrupti impedit ea perferendis suscipit <br /> expedita accusamus odio neque quas hic.
+                                    </p>
+                        
+                                </div>
+                            </span>
+                        </div>
+                        
+                        <div class="nw_summary exp_mt">
+                            <span>
+                                <div class="fp_block">
+                                    <h3 class="">
+                                        EDUCATION
+                                    </h3>
+                                </div>
+                            </span>
+                        
+                            <span>
+                                <div class="fp_block">
+                        
+                                    <h3 class="rightSubHeadingsM">
+                                        2017 - 2022 | Electra Technologies
+                                    </h3>
+                        
+                                    <p class="sumText">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero similique, quas iure animi ipsa eaque
+                                        nisi illo! Vel sit.
+                                    </p>
+                        
+                                    <h3 class="rightSubHeadingsM ex_mt">
+                                        2017 - 2022 | Electra Technologies2
+                                    </h3>
+                        
+                                    <p class="sumText">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    </p>
+                        
+                                </div>
+                            </span>
+                        </div>
+                        
+                        <div class="nw_summary exp_mt">
+                            <span>
+                                <div class="fp_block">
+                                    <h3 class="">
+                                        SKILLS
+                                    </h3>
+                                </div>
+                            </span>
+                        
+                            <span>
+                                <div class="fp_block">
+                        
+                                    <h5 class="rightSubHeadingsM">
+                                        Software Languages
+                                    </h5>
+                        
+                                    <p class="sumText">
+                                        <span class="lang-select flex skills_circle">
+                                            Java
+                                        </span>
+                                        <span class="lang-select flex skills_circle">
+                                            C++
+                                        </span>
+                                        <span class="lang-select flex skills_circle">
+                                            HTML
+                                        </span>
+                                        <span class="lang-select flex skills_circle">
+                                            C#
+                                        </span>
+                                    </p>
+                        
+                                    <h5 class="rightSubHeadingsM ex_mt">
+                                        Languages
+                                    </h5>
+                        
+                                    <p class="sumText txt_right">
+                                        <span class="lang-select flex Lang_circle">
+                                            ENGLISH: 90%
+                                        </span>
+                                        <span class="lang-select flex Lang_circle">
+                                            HEBREW: 100%
+                                        </span>
+                                    </p>
+                        
+                                </div>
+                            </span>
+                        </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
